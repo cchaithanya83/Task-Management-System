@@ -1,14 +1,12 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "miniproject");
-		
-		// Check connection
 		if($conn === false){
 			die("ERROR: Could not connect. "
 				. mysqli_connect_error());
 		}
- $user_name="";
- $password="";
- $Passworddb="";
+ $user_name="";          //user name from text box
+ $password="";           //password from the text box
+ $Passworddb="";        //password from db
  $type="";
  $temp=0;
  
@@ -19,9 +17,7 @@ $password=$_POST['Password'];
 while($row=mysqli_fetch_array($result))
 { 
 	
-	 $Passworddb=$row['password'];
-	 
-	
+	 $Passworddb=$row['password'];	
 	 if($Passworddb == $password)
 	 {
 		$type=$row['type'];
@@ -34,20 +30,17 @@ while($row=mysqli_fetch_array($result))
 	 
 	if($temp=="1")
 	{
-		echo "login succesfull";
+		// echo "login succesfull";
 		 header("location:user/index.php? varname=$user_name ");
 	}
 	elseif($temp==2)
 	{
-		echo "login succesfull";
+		// echo "login succesfull";
 		 header("location:admin/index.php? varname=$user_name ");
 	}
 	else
 	{
 		echo "Invalid data";
-		
+		header("location:index.html");		
 	
 	}
-		
-
-?>

@@ -1,6 +1,7 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "miniproject");
 
+// Check connection
 if ($conn === false) {
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
@@ -9,6 +10,7 @@ $sql = "SELECT * FROM task ORDER BY user_name ASC ";
 $result = $conn->query($sql);
 $var_value = $_GET['varname'];
 
+// Close the database connection
 $conn->close();
 ?>
 
@@ -16,40 +18,149 @@ $conn->close();
 <html>
 <head>
     <title>View Task</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #c299c2;
+        }
+        
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .org {
+            font-family: 'Harlow Solid Italic', sans-serif;
+            font-size: 24px;
+        }
+        
+        .topnav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        
+        .dashboard {
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            margin: 20px;
+            float: left;
+            border: #333;
+            border-width: 10vw;
+        }
+        
+        .dashboard h2 {
+            font-size: 24px;
+        }
+        
+        .dashboard ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .dashboard li {
+            margin-bottom: 10px;
+        }
+        
+        .dashboard a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .dashboard a:hover{
+            background-color: #66a3ff;
+            color: #333;
+            padding: 2px;
+            border-radius: 2px;
+        }
+
+        .content {
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            overflow: auto;
+        }
+        
+        h1{
+            text-align: center;
+        }
+        .task {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .back{
+            margin-left: auto;
+        }
+
+        .head {
+            flex: 1; 
+            text-align: center; 
+        }
+
+        .topnav a:hover {
+            background-color: #4c704c;
+            color: #fff;
+            border-radius: 2px;
+            padding: 5px;
+        }
+    </style>
 </head>
 
 <body>
 <div class="topnav">
-    <font face="Harlow Solid Italic" size="10px" color="white" class="org">Welcome <?php echo $var_value ?></font>
-    <a href="../loginhtml.html"><-back</a>
+<a href="ticket.php?varname=<?php echo $var_value ?>">View a Ticket</a>
+    <a href="../chat.php?varname=<?php echo $var_value ?>">Chat Box</a>
+    <div class="back">
+    <a href="index.php?varname=<?php echo $var_value ?>"><-back</a>
+    </div>
 </div>
-
+<h1>Assigned Tasks</h1>
 <div class="dashboard">
     <h2>Dashboard</h2>
     <ul>
         <?php
         while ($rows = $result->fetch_assoc()) {
-
-            echo '<li><a href="#task_' . $rows['id'] . '">' . $rows['task'] . '</a></li>';
-			
+       
+                echo '<li><a href="#task_' . $rows['id'] . '">' . $rows['task'] . '</a></li>';
+            
         }
         ?>
     </ul>
-    <a  href="ticket.php?varname=<?php  echo $var_value?>"  >Raise a Ticket</a>
-	<a  href="../chat.php?varname=<?php  echo $var_value?>"  >Chat BOx</a>
+   
+    
 </div>
 
-<div class="content">
+<div class="content"> 
     <?php
     $result->data_seek(0); // Reset the result set pointer
     while ($rows = $result->fetch_assoc()) {
 
             echo '<div class="task" id="task_' . $rows['id'] . '">';
-            echo '<h3>' . $rows['user_name'] . '</h3>';
+            echo '<h3>'  . $rows['task'] .  '</h3>';
             echo '<p>Email: ' . $rows['Email'] . '</p>';
             echo '<p>Phone: ' . $rows['Phone'] . '</p>';
-            echo '<p>Task: ' . $rows['task'] . '</p>';
+            echo '<p>Name: '. $rows['user_name'] .'</p>';
             echo '<p>Progress: ' . $rows['progress'] . '</p>';
+            echo '<form method="post" action="edit_progress.php?varname='.$var_value.'">';
+            echo '<input type="hidden" name="task_id" value="' . $rows['id'] . '">';
+            echo '<label>Edit Progress: <input type="number" name="new_progress" value="' . $rows['progress'] . '" required></label>';
+            echo '<input type="submit" value="Update">';
+            echo '</form>';
             echo '</div>';
         
     }
@@ -58,3 +169,4 @@ $conn->close();
 
 </body>
 </html>
+

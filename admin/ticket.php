@@ -2,11 +2,70 @@
 <html>
 <head>
     <title>View Tickets</title>
+    <style>
+
+        body{
+            background-color: bisque;
+        }
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .topnav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .topnav a:hover {
+            background-color: #4c704c;
+            color: #fff;
+            border-radius: 2px;
+            padding: 5px;
+        }
+
+        .ticket {
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .ticket h3 {
+            margin-top: 0;
+        }
+
+        .ticket p {
+            margin: 5px 0;
+        }
+
+        .ticket a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 10px;
+        }
+
+        .ticket a:hover{
+            background-color: #66a3ff;
+            color: #333;
+            border-radius: 2px;
+            padding: 2px;
+
+        }
+
+    </style>
 </head>
 <body>
 <div class="topnav">
-    <font face="Harlow Solid Italic" size="10px" color="black"> View Ticket</font>
-    <a href="../index.html"><-back</a>
+    <font face="Harlow Solid Italic" size="10px" color="white"> View Ticket</font>
+    <a href="index.php?varname=<?php echo $_GET['varname'];?>"><-back</a>
 
 </div>
 
@@ -48,7 +107,7 @@
 
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            echo '<div>';
+            echo '<div class="ticket">';
             echo '<h3>' . $row['title'] . '</h3>';
             echo '<p>Description: ' . $row['description'] . '</p>';
             echo '<p>Status: ' . $row['status'] . '</p>';

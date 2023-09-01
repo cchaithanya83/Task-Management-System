@@ -18,28 +18,131 @@ $conn->close();
 <html>
 <head>
     <title>View Task</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color:aliceblue;
+        }
+        
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .org {
+            font-family: 'Harlow Solid Italic', sans-serif;
+            font-size: 24px;
+        }
+        
+        .topnav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .topnav a:hover{
+            background-color: #4c704c;
+            color: #fff;
+            border-radius: 2px;
+            padding: 5px;;
+        }
+        
+        .dashboard {
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            margin: 20px;
+            float: left;
+        }
+        
+        .dashboard h2 {
+            font-size: 24px;
+        }
+        
+        .dashboard ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .dashboard li {
+            margin-bottom: 10px;
+        }
+        
+        .dashboard a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        
+        .dashboard a:hover{
+            background-color: #bfd9ff;
+            color:#333;
+            padding: 2px;
+            border-radius: 2px;
+        }
+        .content {
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            overflow: auto;
+        }
+        
+        .task {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        .back {
+            margin-left: auto;
+        }
+
+    </style>
 </head>
 
 <body>
 <div class="topnav">
-    <font face="Harlow Solid Italic" size="10px" color="white" class="org">Welcome <?php echo $var_value ?></font>
-    <a href="../index.html"><-back</a>
-</div>
 
+<a href="create_ticket.php?varname=<?php echo $var_value ?>">Raise a Ticket</a>
+    <br>
+    <br>
+    <a href="ticket.php?varname=<?php echo $var_value ?>">View a Ticket</a>
+    <br>
+    <br>
+    <a href="../chat.php?varname=<?php echo $var_value ?>">Chat Box</a> 
+    <div class="back">   
+<a href="../index.html"><-back</a>
+    </div>
+</div>
+<h1><span class="org">Welcome <?php echo $var_value ?></span></h1>
 <div class="dashboard">
     <h2>Dashboard</h2>
     <ul>
         <?php
         while ($rows = $result->fetch_assoc()) {
-			if ($rows['user_name'] == $var_value) {
-            echo '<li><a href="#task_' . $rows['id'] . '">' . $rows['task'] . '</a></li>';
-			}
+            if ($rows['user_name'] == $var_value) {
+                echo '<li><a href="#task_' . $rows['id'] . '">' . $rows['task'] . '</a></li>';
+            }
         }
         ?>
     </ul>
-    <a  href="create_ticket.php?varname=<?php  echo $var_value?>"  >Raise a Ticket</a>
-	<a  href="ticket.php?varname=<?php  echo $var_value?>"  >View a Ticket</a>
-	<a  href="../chat.php?varname=<?php  echo $var_value?>"  >Chat BOx</a>
+    
 </div>
 
 <div class="content">
@@ -61,3 +164,4 @@ $conn->close();
 
 </body>
 </html>
+

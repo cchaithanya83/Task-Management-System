@@ -3,9 +3,29 @@
 	<head>
 		<title>chat</title>
         <style>
+            .topnav {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .topnav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        .topnav a:hover {
+            background-color: #4c704c;
+            color: #fff;
+            border-radius: 2px;
+            padding: 5px;
+        }
         body {
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            background-color: #d9e8ff;
             margin: 0;
             padding: 20px;
         }
@@ -14,9 +34,11 @@
             border-radius: 5px;
             padding: 10px;
             margin-bottom: 20px;
+            border-color: black;
         }
-        .message-box p {
+        .message-box h4 {
             margin: 0;
+            color: black;
         }
         .message-box span {
             font-size: 12px;
@@ -42,6 +64,11 @@
       </script>
 	</head>
 	<body>
+    <div class="topnav">
+    <font face="Harlow Solid Italic" size="10px" color="white">Welcom <?php echo $_GET['varname']; ?></font>
+    <a href="index.php"><-back</a>
+
+</div>
 		<form method="POST">
             <input type="text" name="newtxt" onfocus="noreload()" blur="reload()">
             <input type="submit" value="Send">
@@ -59,7 +86,7 @@
             $string = $_POST['newtxt'];
             $username=$_GET['varname'];
             $txt = '<div class="message-box">';
-            $txt .= '<p>' . $string . '</p>';
+            $txt .= '<h4>' . $string . '</h4>';
             $txt .= '<span>' . $username . ' - ' . $now->format('Y-m-d H:i:s') . '</span>';
             $txt .= '</div>';
 
