@@ -3,18 +3,21 @@
 <head>
     <title>View Tickets</title>
     <style>
-
-        body{
-            background-color: bisque;
-        }
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../hehe.png'); /* Set the background image here */
+    background-size: cover; /* Ensure the image covers the entire body */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-attachment: fixed; /* Fix the image in place */
+}
         .topnav {
             background-color: #333;
             overflow: hidden;
             color: white;
-            padding: 10px;
+            padding: 15px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .topnav a {
@@ -36,6 +39,7 @@
             border-radius: 10px;
             padding: 20px;
             margin: 20px;
+            width: 100px;
         }
 
         .ticket h3 {
@@ -59,16 +63,34 @@
             padding: 2px;
 
         }
+        .back{
+            background-color: transparent;
+    color: #fff;
+    margin-left:75vw;
+        }
+        .head{
+            text-align: center;
+        }
 
     </style>
 </head>
 <body>
 <div class="topnav">
-    <font face="Harlow Solid Italic" size="10px" color="white"> View Ticket</font>
-    <a href="index.php?varname=<?php echo $_GET['varname'];?>"><-back</a>
+<a href="index.php?varname=<?php echo $_GET['varname'] ?>">Create Task</a>
+<a href="viewtask.php?varname=<?php echo $_GET['varname'] ?>">View Tasks</a>
+<a href="../chat.php?varname=<?php echo $_GET['varname'] ?>">Chat Box</a>
+    <button id="backButton" class="back">Back</button>
+<script>
+        var backButton = document.getElementById('backButton');
+        backButton.addEventListener('click', function() {
+            window.history.back();
+        });
+    </script>
 
 </div>
-
+<div class="head">
+<font face="Harlow Solid Italic" size="8px" color="white"> View Ticket</font>
+    </div>
     <?php
     $conn = mysqli_connect("localhost", "root", "", "miniproject");
 

@@ -23,7 +23,10 @@ $conn->close();
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-color:aliceblue;
+            background-image: url('../images\ \(1\).jpeg'); /* Set the background image here */
+            background-size: cover; /* Ensure the image covers the entire body */
+            background-repeat: no-repeat; /* Prevent image repetition */
+            background-attachment: fixed;
         }
         
         .topnav {
@@ -62,6 +65,7 @@ $conn->close();
             padding: 20px;
             width: 250px;
             margin: 20px;
+            min-height: 60vh;
             float: left;
         }
         
@@ -111,6 +115,8 @@ $conn->close();
 
         .back {
             margin-left: auto;
+            background-color: transparent;
+             color: #fff;
         }
 
     </style>
@@ -127,7 +133,13 @@ $conn->close();
     <br>
     <a href="../chat.php?varname=<?php echo $var_value ?>">Chat Box</a> 
     <div class="back">   
-<a href="../index.html"><-back</a>
+    <button id="backButton" class="back">Back</button>
+<script>
+        var backButton = document.getElementById('backButton');
+        backButton.addEventListener('click', function() {
+            window.history.back();
+        });
+    </script>
     </div>
 </div>
 <h1><span class="org">Welcome <?php echo $var_value ?></span></h1>
@@ -151,10 +163,9 @@ $conn->close();
     while ($rows = $result->fetch_assoc()) {
         if ($rows['user_name'] == $var_value) {
             echo '<div class="task" id="task_' . $rows['id'] . '">';
-            echo '<h3>' . $rows['user_name'] . '</h3>';
+            echo '<h3>Task: ' . $rows['task'] . '</h3>';
             echo '<p>Email: ' . $rows['Email'] . '</p>';
             echo '<p>Phone: ' . $rows['Phone'] . '</p>';
-            echo '<p>Task: ' . $rows['task'] . '</p>';
             echo '<p>Progress: ' . $rows['progress'] . '</p>';
             echo '</div>';
         }

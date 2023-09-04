@@ -20,11 +20,15 @@ $conn->close();
     <title>View Task</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #c299c2;
-        }
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../images\ \(2\).jpeg'); /* Set the background image here */
+    background-size: cover; /* Ensure the image covers the entire body */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-attachment: fixed; /* Fix the image in place */
+}
+
         
         .topnav {
             background-color: #333;
@@ -105,6 +109,8 @@ $conn->close();
 
         .back{
             margin-left: auto;
+            background-color: transparent;
+    color: #fff;
         }
 
         .head {
@@ -123,10 +129,17 @@ $conn->close();
 
 <body>
 <div class="topnav">
+<a href="index.php?varname=<?php echo $var_value ?>">Create task</a>
 <a href="ticket.php?varname=<?php echo $var_value ?>">View a Ticket</a>
     <a href="../chat.php?varname=<?php echo $var_value ?>">Chat Box</a>
     <div class="back">
-    <a href="index.php?varname=<?php echo $var_value ?>"><-back</a>
+        <button id="backButton" class="back">Back</button>
+        <script>
+        var backButton = document.getElementById('backButton');
+        backButton.addEventListener('click', function() {
+            window.history.back();
+        });
+    </script>
     </div>
 </div>
 <h1>Assigned Tasks</h1>

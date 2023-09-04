@@ -9,7 +9,6 @@ $conn = mysqli_connect("localhost", "root", "", "miniproject");
  $Passworddb="";        //password from db
  $type="";
  $temp=0;
- 
  $user_name=$_POST['user_name'];
 $password=$_POST['Password'];
   $query="select type, password from user where   user_name='$user_name'";

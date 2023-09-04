@@ -16,12 +16,15 @@ $result = $conn->query($sql1);
     <title>Create Task</title>
     <link rel="stylesheet" href="style.css">
     <style>
-         body {
-            font-family: Arial, sans-serif;
-            background-color: #d9f0ff;
-            margin: 0;
-            padding: 0;
-        }
+          body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../iii.jpeg'); /* Set the background image here */
+    background-size: cover; /* Ensure the image covers the entire body */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-attachment: fixed; /* Fix the image in place */
+}
 
         .topnav {
             background-color: #333;
@@ -44,17 +47,25 @@ $result = $conn->query($sql1);
         }
 
         .topnav a:hover {
-            background-color: #444;
-            transition: background-color 0.3s ease-in-out;
+            background-color: #4c704c;
+            color: #fff;
+            border-radius: 2px;
+            padding: 5px;
         }
 
+        .hehe{
+            margin-top: 100px;
+        }
         h1 {
             margin-top: 20px;
             text-align: center;
+            color:#444;
         }
 
         .back {
             margin-left: auto;
+            background-color: transparent;
+    color: #fff;
         }
 
         form {
@@ -103,13 +114,17 @@ $result = $conn->query($sql1);
 <a href="viewtask.php?varname=<?php echo $_GET['varname'] ?>">View Tasks</a>
 <a href="ticket.php?varname=<?php echo $_GET['varname'] ?>">View Ticket</a>
 <a href="../chat.php?varname=<?php echo $_GET['varname'] ?>">Chat Box</a>
-
-<div class="back">    
-<a href="../index.html"><-back</a>
-    </div>
+<button id="backButton" class="back">Back</button>
+<script>
+        var backButton = document.getElementById('backButton');
+        backButton.addEventListener('click', function() {
+            window.history.back();
+        });
+    </script>
 </div>
 
 <h1>Create Task</h1>
+<div class="hehe">
 <form method="POST">
     <label>User Name:
         <select name="user_name">
@@ -134,7 +149,7 @@ $result = $conn->query($sql1);
     </label>
     <input type="submit" value="Create Task">
 </form>
-
+</div>
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_name = $_POST['user_name'];
