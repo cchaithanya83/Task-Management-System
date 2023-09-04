@@ -10,7 +10,7 @@
             .topnav {
             background-color: #333;
             color: white;
-            padding: 15px;
+            
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -31,7 +31,7 @@
             font-family: Arial, sans-serif;
             background-color: #d9e8ff;
             margin: 0;
-            padding: 20px;
+           
         }
         .message-user {
             border: 1px solid #ccc;
@@ -67,9 +67,24 @@
             color: #888;
         }
         .back{
-            margin-left: 60vw;
+            margin-right: 2vw;
             background-color: transparent;
             color: #fff;
+        }
+        .body{
+            padding: 20px;
+        }
+        .textbox{
+            width: 400px;
+            height: 70px;
+            border-radius: 10px;
+            
+        }
+        .butn{
+            border-radius: 5px;
+            width: 110px;
+            height: 50px;
+            background-color: #a9e8ea;
         }
         
 
@@ -93,7 +108,7 @@
 	</head>
 	<body>
     <div class="topnav">
-    <img src="123.png" width="15%" height="10%">
+    <img src="123.png" width="200px" height="70px">
     <button id="backButton" class="back">Back</button>
 <script>
         var backButton = document.getElementById('backButton');
@@ -103,10 +118,11 @@
     </script>
 
 </div>
+<div class="body">
 <font face="Harlow Solid Italic" size="10px" color="black">WELCOME <?php echo $_GET['varname']; ?></font>
 		<form method="POST">
-            <input type="text" name="newtxt" onfocus="noreload()" blur="reload()">
-            <input type="submit" value="Send">
+            <input type="text" class="textbox" name="newtxt" onfocus="noreload()" blur="reload()">
+            <input type="submit" class="butn" value="Send">
         </form>
         
 		<?php
@@ -154,5 +170,6 @@
         }
 
 		?>
+        </div>
 	</body>
 </html>

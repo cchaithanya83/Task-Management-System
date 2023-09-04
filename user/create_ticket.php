@@ -61,9 +61,9 @@
         }
 
         form {
-            max-width: 400px;
+            max-width: 300px;
             margin: 0 auto;
-            padding: 10vw;
+            padding: 3vw;
             border: 1px solid #ccc;
             border-radius: 15px;
             background-color: #fff;
@@ -95,6 +95,9 @@
 
         input[type="submit"]:hover {
             background-color: #0056b3;
+        }
+        .sucess{
+            color: #fff;
         }
     </style>
 </head>
@@ -137,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "INSERT INTO tickets (title, description, status, username) VALUES ('$title', '$description', '$status','$username')";
     if (mysqli_query($conn, $sql)) {
-        echo "<p>Ticket Raised successfully.</p>";
+        echo "<p class='sucess'>Ticket Raised successfully.</p>";
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }

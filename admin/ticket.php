@@ -39,7 +39,7 @@
             border-radius: 10px;
             padding: 20px;
             margin: 20px;
-            width: 100px;
+            
         }
 
         .ticket h3 {

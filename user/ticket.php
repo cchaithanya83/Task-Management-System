@@ -24,7 +24,7 @@
                 padding: 20px;
                 margin: 10px;
                 border: 1px solid #ccc;
-                border-radius: 5px;width: 200px;
+                border-radius: 5px;width: 800px;
             }
 
             h3 {
