@@ -141,6 +141,7 @@ $result = $conn->query($sql1);
     <label>Email:
         <input type="email" name="email" required>
     </label>
+
     <label>Task Description:
         <textarea name="task_description" required></textarea>
     </label>
@@ -154,10 +155,11 @@ $result = $conn->query($sql1);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_name = $_POST['user_name'];
     $email = $_POST['email'];
+
     $task_description = $_POST['task_description'];
     $progress = $_POST['progress'];
 
-    $sql = "INSERT INTO task (user_name, Email, task, progress) VALUES ('$user_name', '$email', '$task_description', $progress)";
+    $sql = "INSERT INTO task (user_name, Email, task, progress) VALUES ('$user_name', '$email','$task_description', $progress)";
     if (mysqli_query($conn, $sql)) {
         echo "<p>Task created successfully.</p>";
     } else {

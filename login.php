@@ -40,6 +40,6 @@ while($row=mysqli_fetch_array($result))
 	else
 	{
 		echo "Invalid data";
-		header("location:index.html");		
+		header("location:index.html?Invalid");		
 	
 	}

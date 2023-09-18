@@ -166,7 +166,6 @@ $conn->close();
             echo '<div class="task" id="task_' . $rows['id'] . '">';
             echo '<h3>'  . $rows['task'] .  '</h3>';
             echo '<p>Email: ' . $rows['Email'] . '</p>';
-            echo '<p>Phone: ' . $rows['Phone'] . '</p>';
             echo '<p>Name: '. $rows['user_name'] .'</p>';
             echo '<p>Progress: ' . $rows['progress'] . '</p>';
             echo '<form method="post" action="edit_progress.php?varname='.$var_value.'">';

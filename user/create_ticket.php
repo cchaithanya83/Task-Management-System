@@ -8,7 +8,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('../huhu.avif'); /* Set the background image here */
+            background-image: url('../back.jpg'); /* Set the background image here */
     background-size: cover; /* Ensure the image covers the entire body */
     background-repeat: no-repeat; /* Prevent image repetition */
     background-attachment: fixed;

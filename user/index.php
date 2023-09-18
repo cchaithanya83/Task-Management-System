@@ -165,7 +165,6 @@ $conn->close();
             echo '<div class="task" id="task_' . $rows['id'] . '">';
             echo '<h3>Task: ' . $rows['task'] . '</h3>';
             echo '<p>Email: ' . $rows['Email'] . '</p>';
-            echo '<p>Phone: ' . $rows['Phone'] . '</p>';
             echo '<p>Progress: ' . $rows['progress'] . '</p>';
             echo '</div>';
         }
